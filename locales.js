@@ -6,7 +6,7 @@
 const LOCALES = {
   fi: {
     // Header
-    headerTitle: 'Valfi Site Toolkit',
+    headerTitle: 'Valfi Local SEO Toolkit',
     loading: 'Ladataan...',
     pageLabel: 'Sivu',
 
@@ -71,7 +71,7 @@ const LOCALES = {
   },
 
   en: {
-    headerTitle: 'Valfi Site Toolkit',
+    headerTitle: 'Valfi Local SEO Toolkit',
     loading: 'Loading...',
     pageLabel: 'Page',
 
