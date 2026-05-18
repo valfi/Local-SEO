@@ -2,7 +2,9 @@
 
 Valfi Local SEO Toolkit is a powerful Chrome extension designed to automate and streamline technical SEO analysis and accessibility workflows. It extracts essential page data, takes full-page screenshots, and leverages local AI (via LM Studio) to automatically generate SEO-optimized ALT texts for missing images.
 
-![Valfi Local SEO Toolkit Screenshot](screenshot.png)
+<p align="center">
+  <img src="screenshot.png" alt="Valfi Local SEO Toolkit Screenshot" width="600">
+</p>
 
 ## Features
 
