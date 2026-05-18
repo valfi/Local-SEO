@@ -71,5 +71,5 @@ This extension runs completely locally.
 * AI generations are handled completely offline by your local LM Studio instance, ensuring full data privacy.
 
 <p align="center">
-  <img src="screenshot.png" alt="Valfi Local SEO Toolkit Screenshot" width="400">
+  <img src="screenshot.png" alt="Valfi Local SEO Toolkit Screenshot" width="800">
 </p>
