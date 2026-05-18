@@ -16,7 +16,7 @@ async function init() {
   const pageTitleEl = document.getElementById('pageTitle');
 
   // --- Language setup ---
-  let lang = 'fi';
+  let lang = 'en';
   try {
     const stored = await chrome.storage.local.get('lang');
     if (stored.lang && LOCALES[stored.lang]) lang = stored.lang;

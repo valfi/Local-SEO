@@ -136,7 +136,7 @@ const LOCALES = {
  * Helper: get a translated string with placeholder replacement.
  * Usage: t('imagesCount', { n: 5 }) → "5 kuvaa" or "5 images"
  */
-let _currentLang = 'fi';
+let _currentLang = 'en';
 
 function setLang(lang) {
   _currentLang = lang;
