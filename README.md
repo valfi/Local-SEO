@@ -70,6 +70,6 @@ This extension runs completely locally.
 * Your page data is never sent to external APIs (unless you modify the code to do so).
 * AI generations are handled completely offline by your local LM Studio instance, ensuring full data privacy.
 
-<p align="center">
-  <img src="screenshot.png" alt="Valfi Local SEO Toolkit Screenshot" width="800">
+<p align="left">
+  <img src="screenshot.png" alt="Valfi Local SEO Toolkit Screenshot" width="900">
 </p>
