@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+  <title>Valfi Site Toolkit</title>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="7" fill="url(#g1)"/>
+          <path d="M8 20V12h3v8H8zm5 0V8h3v12h-3zm5 0v-6h3v6h-3z" fill="#fff"/>
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+        </svg>
+        <div>
+          <h1 data-i18n="headerTitle">Valfi Site Toolkit</h1>
+          <p class="subtitle" id="currentUrl" data-i18n="loading">Ladataan...</p>
+        </div>
+      </div>
+      <div class="lang-toggle" id="langToggle">
+        <button class="lang-btn active" data-lang="fi">FI</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </header>
+
+    <!-- Page info -->
+    <div class="page-info" id="pageInfo">
+      <div class="info-row">
+        <span class="info-label" data-i18n="pageLabel">Sivu</span>
+        <span class="info-value" id="pageTitle">—</span>
+      </div>
+    </div>
+
+    <!-- Options -->
+    <section class="options">
+      <h2 class="section-title" data-i18n="selectContent">Valitse sisältö</h2>
+
+      <label class="option-card" for="optSource">
+        <div class="option-icon source-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 7l-4 3 4 3m8-6l4 3-4 3M11 4l-2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="option-text">
+          <span class="option-title" data-i18n="sourceTitle">Lähdekoodi (siivottu)</span>
+          <span class="option-desc" data-i18n="sourceDesc">Headingit, tekstit, kuvat &amp; alt-tekstit</span>
+        </div>
+        <input type="checkbox" id="optSource" checked>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="option-card" for="optScreenshot">
+        <div class="option-icon screenshot-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <div class="option-text">
+          <span class="option-title" data-i18n="screenshotTitle">Kuvakaappaus (PNG)</span>
+          <span class="option-desc" data-i18n="screenshotDesc">Koko sivun kuvakaappaus</span>
+        </div>
+        <input type="checkbox" id="optScreenshot" checked>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="option-card" for="optNetwork">
+        <div class="option-icon network-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10h16M10 2v16M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="option-text">
+          <span class="option-title" data-i18n="networkTitle">Verkkopyynnöt (CSV)</span>
+          <span class="option-desc" data-i18n="networkDesc">Resurssit, osoitteet, latausajat</span>
+        </div>
+        <input type="checkbox" id="optNetwork" checked>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="option-card" for="optSchema">
+        <div class="option-icon schema-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="option-text">
+          <span class="option-title" data-i18n="schemaTitle">JSON-LD Schema</span>
+          <span class="option-desc" data-i18n="schemaDesc">Rakenteinen data (structured data)</span>
+        </div>
+        <input type="checkbox" id="optSchema" checked>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="option-card" for="optAlts">
+        <div class="option-icon alts-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="15" r="2" fill="currentColor"/></svg>
+        </div>
+        <div class="option-text">
+          <span class="option-title" data-i18n="altsTitle">Generoidut ALT-tekstit (TSV)</span>
+          <span class="option-desc" data-i18n="altsDesc">AI:lla generoidut kuvaukset</span>
+        </div>
+        <input type="checkbox" id="optAlts" checked>
+        <span class="checkmark"></span>
+      </label>
+    </section>
+
+    <!-- ALT Text Generator -->
+    <section class="alt-section">
+      <div class="alt-header">
+        <h2 class="section-title" data-i18n="altSectionTitle">ALT-tekstigeneraattori</h2>
+        <div class="lm-status" id="lmStatus" title="Tarkistetaan LM Studio -yhteyttä...">
+          <span class="lm-dot" id="lmDot"></span>
+          <span class="lm-label" id="lmLabel">LM Studio</span>
+        </div>
+      </div>
+      <button class="btn-alt" id="btnAltScan">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M5 13l3-4 2.5 3L13 8l3 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="7" cy="7.5" r="1.5" fill="currentColor"/>
+        </svg>
+        <span data-i18n="scanBtn">Skannaa kuvat</span>
+        <span class="alt-badge">AI</span>
+      </button>
+
+      <!-- Scan results area (hidden by default) -->
+      <div class="alt-results-area" id="altResultsArea" style="display:none;">
+        <div class="alt-list-header">
+          <label class="alt-select-all">
+            <input type="checkbox" id="altSelectAll">
+            <span data-i18n="selectAll">Valitse kaikki</span>
+          </label>
+          <span class="alt-count" id="altCount">0 kuvaa</span>
+        </div>
+        <div class="alt-list" id="altList">
+          <!-- Dynamically filled -->
+        </div>
+        <button class="btn-generate" id="btnGenerate" disabled>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v6m0 0l-2.5-2.5M8 7l2.5-2.5M3 10l1.5 1.5L8 8l3.5 3.5L13 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="btnGenerateText" data-i18n="generateBtn">Generoi ALT-tekstit</span>
+        </button>
+        <div class="alt-progress-text" id="altProgressText" style="display:none;"></div>
+      </div>
+    </section>
+
+    <!-- Download button -->
+    <button class="btn-download" id="btnDownload">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v10m0 0l-3.5-3.5M9 12l3.5-3.5M3 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="downloadBtn">Lataa SEO-paketti (.zip)</span>
+    </button>
+
+    <!-- Progress -->
+    <div class="progress-area" id="progressArea" style="display:none;">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <p class="progress-text" id="progressText" data-i18n="preparing">Valmistellaan...</p>
+    </div>
+
+    <!-- Status messages -->
+    <div class="status" id="status" style="display:none;"></div>
+  </div>
+
+  <script src="lib/jszip.min.js"></script>
+  <script src="locales.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
